@@ -59,7 +59,11 @@ public abstract class WordDatabase extends RoomDatabase {
                 Word w = new Word(word.getString("word"),
                         word.getString("means"),
                         word.getInt("star") == 0 ? false : true);
-                wordDao.insert(w);
+
+                new Thread(() ->{
+                    wordDao.insert(w);
+                }).start();
+
             }
         } catch (IOException e) {
             e.printStackTrace();

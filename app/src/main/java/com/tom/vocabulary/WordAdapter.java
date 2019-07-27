@@ -34,6 +34,10 @@ public class WordAdapter extends RecyclerView.Adapter<WordViewHolder> {
 
     @Override
     public int getItemCount() {
-        return words.size();
+        return words == null ? 0 : words.size();
+    }
+
+    public void setWords(List<Word> words) {
+        this.words = words;
     }
 }
