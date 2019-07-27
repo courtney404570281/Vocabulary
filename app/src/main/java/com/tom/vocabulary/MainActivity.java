@@ -40,13 +40,14 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        /*
         new Thread(() -> {
             List<Word> words = WordDatabase.getInstance(this)
                     .wordDao()
                     .getAll();
             adapter = new WordAdapter(words);
             recyclerView.setAdapter(adapter);
-        }).start();
+        }).start();*/
     }
 
     @Override
