@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.tom.vocabulary.data.Word;
+
 import java.util.List;
 
 public class WordAdapter extends RecyclerView.Adapter<WordViewHolder> {

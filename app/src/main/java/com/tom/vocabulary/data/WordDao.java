@@ -1,4 +1,4 @@
-package com.tom.vocabulary;
+package com.tom.vocabulary.data;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;

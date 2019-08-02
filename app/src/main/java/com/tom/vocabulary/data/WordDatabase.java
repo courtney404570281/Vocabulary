@@ -1,4 +1,4 @@
-package com.tom.vocabulary;
+package com.tom.vocabulary.data;
 
 import android.content.Context;
 
@@ -7,6 +7,8 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
+
+import com.tom.vocabulary.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;

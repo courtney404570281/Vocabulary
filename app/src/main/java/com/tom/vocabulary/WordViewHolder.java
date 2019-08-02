@@ -7,6 +7,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.tom.vocabulary.data.Word;
+
 public class WordViewHolder extends RecyclerView.ViewHolder {
     TextView nameTest;
     ImageView starImage;
