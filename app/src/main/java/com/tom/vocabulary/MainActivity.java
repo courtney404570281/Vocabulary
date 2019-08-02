@@ -45,7 +45,8 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new WordAdapter(null);
         recyclerView.setAdapter(adapter);
-        viewModel = ViewModelProviders.of(this)
+        ViewModelFactory factory = ViewModelFactory.createFactory(this);
+        viewModel = ViewModelProviders.of(this, factory)
                 .get(WordViewModel.class);
         viewModel.getWords().observe(this, new Observer<List<Word>>() {
             @Override

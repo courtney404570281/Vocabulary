@@ -17,10 +17,7 @@ public class DataRepository {
 
     public static DataRepository getInstance(Application application) {
         if (instance == null) {
-            WordDatabase database = Room.databaseBuilder(
-                    application.getApplicationContext(),
-                    WordDatabase.class, "word-database")
-                    .build();
+            WordDatabase database = WordDatabase.getInstance(application);
             instance = new DataRepository(database.wordDao(),
                     Executors.newSingleThreadExecutor());
         }

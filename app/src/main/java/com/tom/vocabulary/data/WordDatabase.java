@@ -34,12 +34,12 @@ public abstract class WordDatabase extends RoomDatabase {
                         @Override
                         public void onCreate(@NonNull SupportSQLiteDatabase db) {
                             super.onCreate(db);
-
+                            fillDataFromJsonFile(instance.wordDao(), context);
                         }
                     })
                     .build();
-            fillDataFromJsonFile(instance.wordDao(), context);
         }
+
         return instance;
     }
 
