@@ -4,6 +4,7 @@ import android.app.Application;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Room;
+import androidx.sqlite.db.SupportSQLiteQueryBuilder;
 
 import java.util.List;
 import java.util.concurrent.ExecutionException;
@@ -53,5 +54,20 @@ public class DataRepository {
             }
         });
 
+    }
+
+    public LiveData<List<Word>> getSortWords(String sortBy) {
+        //TODO: sqlitequery
+        SupportSQLiteQueryBuilder builder =
+                SupportSQLiteQueryBuilder.builder("Word");
+        switch (sortBy) {
+            case "NAME":
+                builder.orderBy("name");
+                break;
+            case "STAR":
+                builder.orderBy("star DESC");
+                break;
+        }
+        return dao.getSortWords(builder.create());
     }
 }

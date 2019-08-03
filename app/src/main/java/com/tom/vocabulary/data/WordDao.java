@@ -6,6 +6,8 @@ import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
+import androidx.room.RawQuery;
+import androidx.sqlite.db.SupportSQLiteQuery;
 
 import java.util.List;
 
@@ -13,6 +15,9 @@ import java.util.List;
 public interface WordDao {
     @Query("select * from word")
     LiveData<List<Word>> getAll();
+
+    @RawQuery(observedEntities = Word.class)
+    LiveData<List<Word>> getSortWords(SupportSQLiteQuery query);
 
     @Query("select * from word where name = :name")
     LiveData<Word> get(String name);

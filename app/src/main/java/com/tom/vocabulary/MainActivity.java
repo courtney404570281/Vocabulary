@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
     private RecyclerView recyclerView;
     private WordAdapter adapter;
-    private WordViewModel viewModel;
+    private SortViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,9 +63,9 @@ public class MainActivity extends AppCompatActivity {
                 .getString("sort", "DEFAULT");
         Log.d(TAG, "onCreate: " + sortBy);
 
-        ViewModelFactory factory = ViewModelFactory.createFactory(this);
+        SortViewModelFactory factory = SortViewModelFactory.createFactory(getApplication(), sortBy);
         viewModel = ViewModelProviders.of(this, factory)
-                .get(WordViewModel.class);
+                .get(SortViewModel.class);
         viewModel.getWords().observe(this, new Observer<List<Word>>() {
             @Override
             public void onChanged(List<Word> words) {
