@@ -22,4 +22,7 @@ public interface WordDao {
 
     @Delete
     void delete(Word word);
+
+    @Query("UPDATE word SET star = CASE WHEN star = 1 THEN 0 ELSE 1 END WHERE name = :name")
+    void updateStar(String name);
 }

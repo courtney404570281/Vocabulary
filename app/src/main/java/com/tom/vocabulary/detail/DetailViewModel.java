@@ -20,4 +20,8 @@ public class DetailViewModel extends ViewModel {
         wordLiveData = repository.getWord(name);
         return wordLiveData;
     }
+
+    public void setStar() {
+        repository.updateStar(name);
+    }
 }

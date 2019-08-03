@@ -44,4 +44,14 @@ public class DataRepository {
     public LiveData<Word> getWord(String name) {
         return dao.get(name);
     }
+
+    public void updateStar(String name) {
+        ioExecutor.submit(new Runnable() {
+            @Override
+            public void run() {
+                dao.updateStar(name);
+            }
+        });
+
+    }
 }
