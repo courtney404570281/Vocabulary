@@ -15,7 +15,7 @@ public interface WordDao {
     LiveData<List<Word>> getAll();
 
     @Query("select * from word where name = :name")
-    Word get(String name);
+    LiveData<Word> get(String name);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(Word word);

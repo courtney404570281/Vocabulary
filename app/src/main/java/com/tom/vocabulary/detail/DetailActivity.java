@@ -1,6 +1,7 @@
 package com.tom.vocabulary.detail;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProviders;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -17,5 +18,13 @@ public class DetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail);
         String name = getIntent().getStringExtra("WORD");
         Log.d(TAG, "onCreate: " + name);
+        DetailViewModelFactory factory =
+                DetailViewModelFactory.createFactory(getApplication(), name);
+        DetailViewModel viewModel =
+                ViewModelProviders.of(this, factory)
+                .get(DetailViewModel.class);
+        viewModel.getWord().observe(this, word -> {
+            Log.d(TAG, "onCreate: " + word.getMeans() );
+        });
     }
 }

@@ -40,4 +40,8 @@ public class DataRepository {
             return null;
         }
     }
+
+    public LiveData<Word> getWord(String name) {
+        return dao.get(name);
+    }
 }
