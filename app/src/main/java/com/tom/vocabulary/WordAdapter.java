@@ -13,6 +13,14 @@ import java.util.List;
 
 public class WordAdapter extends RecyclerView.Adapter<WordViewHolder> {
     List<Word> words;
+    public interface OnWordClickListener {
+        void wordClicked(String name);
+    }
+    OnWordClickListener onWordClickListener;
+
+    public void setOnWordClickListener(OnWordClickListener onWordClickListener) {
+        this.onWordClickListener = onWordClickListener;
+    }
 
     public WordAdapter(List<Word> words) {
         this.words = words;
@@ -31,6 +39,9 @@ public class WordAdapter extends RecyclerView.Adapter<WordViewHolder> {
         Word word = words.get(position);
         if (word != null) {
             holder.setWord(word);
+            if (onWordClickListener != null) {
+                holder.setOnWordClickAction(onWordClickListener);
+            }
         }
     }
 

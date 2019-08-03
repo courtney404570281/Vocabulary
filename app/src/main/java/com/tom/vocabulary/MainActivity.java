@@ -1,10 +1,12 @@
 package com.tom.vocabulary;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.tom.vocabulary.data.Word;
+import com.tom.vocabulary.detail.DetailActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -45,6 +47,16 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new WordAdapter(null);
         recyclerView.setAdapter(adapter);
+        adapter.setOnWordClickListener(new WordAdapter.OnWordClickListener() {
+            @Override
+            public void wordClicked(String name) {
+                Intent intent = new Intent(
+                        MainActivity.this, DetailActivity.class);
+                intent.putExtra("WORD", name);
+                startActivity(intent);
+            }
+        });
+
         ViewModelFactory factory = ViewModelFactory.createFactory(this);
         viewModel = ViewModelProviders.of(this, factory)
                 .get(WordViewModel.class);
