@@ -12,9 +12,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -23,6 +25,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String TAG = MainActivity.class.getSimpleName();
     private RecyclerView recyclerView;
     private WordAdapter adapter;
     private WordViewModel viewModel;
@@ -56,6 +59,9 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        String sortBy = PreferenceManager.getDefaultSharedPreferences(this)
+                .getString("sort", "DEFAULT");
+        Log.d(TAG, "onCreate: " + sortBy);
 
         ViewModelFactory factory = ViewModelFactory.createFactory(this);
         viewModel = ViewModelProviders.of(this, factory)
@@ -93,6 +99,7 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            startActivity(new Intent(this, SettingsActivity.class));
             return true;
         }
 

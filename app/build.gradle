@@ -42,6 +42,8 @@ dependencies {
     implementation "com.android.support:appcompat-v7:$support_version"
     implementation "com.android.support.constraint:constraint-layout:$constraint_version"
     implementation "com.android.support:design:$support_version"
+    implementation "com.android.support:preference-v14:$support_version"
+
     // ViewModel and LiveData
     implementation "android.arch.lifecycle:extensions:$lifecycle_version"
     implementation "android.arch.persistence.room:runtime:$room_version"
