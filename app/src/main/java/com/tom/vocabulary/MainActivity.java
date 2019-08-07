@@ -1,6 +1,7 @@
 package com.tom.vocabulary;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -12,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.preference.Preference;
 import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -23,7 +25,7 @@ import android.view.MenuItem;
 
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements SharedPreferences.OnSharedPreferenceChangeListener {
 
     private static final String TAG = MainActivity.class.getSimpleName();
     private RecyclerView recyclerView;
@@ -62,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
         String sortBy = PreferenceManager.getDefaultSharedPreferences(this)
                 .getString("sort", "DEFAULT");
         Log.d(TAG, "onCreate: " + sortBy);
+        PreferenceManager.getDefaultSharedPreferences(this).registerOnSharedPreferenceChangeListener(this);
 
         SortViewModelFactory factory = SortViewModelFactory.createFactory(getApplication(), sortBy);
         viewModel = ViewModelProviders.of(this, factory)
@@ -104,5 +107,12 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+        if (key.equals("sort")) {
+            viewModel.updateSortBy(sharedPreferences.getString(key, "DEFAULT"));
+        }
     }
 }
