@@ -1,4 +1,12 @@
 <resources>
     <string name="app_name">Vocabulary</string>
     <string name="action_settings">Settings</string>
+
+    <string name="answer_tag">answer-name</string>
+    <string name="title_activity_game">GameActivity</string>
+    <string name="correct_answer">Correct</string>
+    <string name="wrong_answer">Wrong</string>
+    <string name="win">Congratulation! You\'re a Master</string>
+    <string name="maybe">Almost there, keep tring</string>
+    <string name="loose">Sorry, need practice</string>
 </resources>

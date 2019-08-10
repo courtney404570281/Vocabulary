@@ -87,4 +87,8 @@ public class DataRepository {
         }
         return null;
     }
+
+    public LiveData<List<Word>> getRandomWords(int limit) {
+        return dao.getRandom(limit);
+    }
 }

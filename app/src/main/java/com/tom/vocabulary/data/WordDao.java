@@ -23,6 +23,9 @@ public interface WordDao {
     @Query("select * from word where name = :name")
     LiveData<Word> get(String name);
 
+    @Query("select * from word order by RANDOM() LIMIT :limit")
+    LiveData<List<Word>> getRandom(int limit);
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(Word word);
 
